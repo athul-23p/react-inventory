@@ -5,21 +5,22 @@ export const Inventory = () => {
     books: 10,
     notebooks: 13,
     pens: 40,
+    inkpens: 12,
   });
   // Create add and remove functions here that changes the
   const add = (key) => {
     inv[key]++;
-    let { books, notebooks, pens } = inv;
-    setInv({ books, notebooks, pens });
+    let { books, notebooks, pens, inkpens } = inv;
+    setInv({ books, notebooks, pens, inkpens });
   };
 
   const remove = (key) => {
-    if(inv[key]-1 < 0){
+    if (inv[key] - 1 < 0) {
       return;
     }
     inv[key]--;
-    let { books, notebooks, pens } = inv;
-    setInv({ books, notebooks, pens });
+    let { books, notebooks, pens, inkpens } = inv;
+    setInv({ books, notebooks, pens, inkpens });
   };
   // state.
   return (
@@ -48,7 +49,9 @@ export const Inventory = () => {
         <button className="circlularButton" onClick={() => add("notebooks")}>
           +
         </button>
-        <button className="circlularButton" onClick={() => remove('notebooks')}>-</button>
+        <button className="circlularButton" onClick={() => remove("notebooks")}>
+          -
+        </button>
         <span>{inv.notebooks}</span>
       </div>
       <div className="items">
@@ -56,17 +59,23 @@ export const Inventory = () => {
         <button className="circlularButton" onClick={() => add("pens")}>
           +
         </button>
-        <button className="circlularButton" onClick={() => remove('pens')}>-</button>
+        <button className="circlularButton" onClick={() => remove("pens")}>
+          -
+        </button>
         <span>{inv.pens}</span>
       </div>
       <div className="items">
         <span>Ink Pens: </span>
-        <button className="circlularButton">+</button>
-        <button className="circlularButton">-</button>
+        <button className="circlularButton" onClick={() => add("inkpens")}>
+          +
+        </button>
+        <button className="circlularButton" onClick={() => remove("inkpens")}>
+          -
+        </button>
         <span>{inv.inkpens}</span>
       </div>
       {/*calculate total and show it*/}
-      total: {inv.books + inv.notebooks + inv.pens}
+      total: {inv.books + inv.notebooks + inv.pens + inv.inkpens}
     </div>
   );
 };
